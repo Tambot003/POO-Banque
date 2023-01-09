@@ -7,7 +7,6 @@ class Titulaire
     private string $_ville;
     private array $_allComptes;
     
-    // création de construct (ne pas mettre allComptes, il sera ajouter ailleurs)
     public function __construct($nom, $prenom, $dtNaissance, $ville)
     {
         $this->_nom = $nom;

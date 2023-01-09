@@ -6,37 +6,36 @@
 <title>Banque</title>
 </head>
 <body>
-
+<h3>Vous êtes chargé(e) de créer un projet orienté objet permettant de gérer des titulaires et leurs comptes bancaires respectifs.</h3>
+<hr>
 <?php
 require "Compte.php";
 require "holder.php";
-spl_autoload_register(function ($class_name) {
+spl_autoload_register(function ($class_banque) {
     
     require_once $class_name . '.php';
 });
 
 
-$titulaire1 = new Titulaire("hali", "Tamim", "08-11-1998", "abatabat");
+$titulaire1 = new Titulaire("hali", "Tamim", "1998", "abatabat");
 
-$compte1 = new Compte("Compte courant", 66000, "$", $titulaire1);
-$compte2 = new Compte("Livret A", 5000, "$", $titulaire1);
+$compte1 = new Compte("Compte courant", 100, "$", $titulaire1);
+$compte2 = new Compte("Livret A", 50, "$", $titulaire1);
 
 echo "<br>" . $titulaire1->__toString() . "&nbsp";
 
 
-echo "<br>" . " Ville :" . "&nbsp" .  $titulaire1->get_ville() . "&nbsp" ."<br>";
+echo "<br>" . " Ville :" . "   " .  $titulaire1->get_ville() . "&nbsp" ."<br>";
 echo "<br>" . $titulaire1->afficherComptes() . "&nbsp";
 
-$compte1->virement(0, $compte2);
-$compte1->crediter(0);
+$compte1->crediter(10);
 $compte1->debiter(0);
 
 $compte2->virement(0, $compte1);
-$compte1->crediter(0);
+$compte1->crediter(10);
 $compte1->debiter(0);
 
-
-
+$compte1->virement(10, $compte2);
 
 
 ?>

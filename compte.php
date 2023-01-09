@@ -2,12 +2,9 @@
 class Compte 
 {
     private string $_libelle;
-    //float pour les chiffres a virgules
-    //int pour les chiffres entiers
     private float $_soldeInit;
     private string $_devise;
     private Titulaire $_titulaireCompte;
-    
     
     
     public function __construct($libelle, $soldeInit, $devise, Titulaire $titulaireCompte)
@@ -73,17 +70,22 @@ class Compte
     {
         //Pour additioner  
         $this->_soldeInit += $montant;
+        echo "le compte $this a été crédité de $montant $ </br>";
     }
    
     public function debiter($montant)
     {
        
         $this->_soldeInit -= $montant;
+
+        echo "le compte $this a été débité de $montant $ </br>";
     }
     
     public function virement($montant, Compte $compte) {
         $this->debiter($montant);
         $compte->crediter($montant);
+
+        echo "Le compte $this a viré $montant $ à $compte </br>" ;
     }
     
     public function __toString() {
